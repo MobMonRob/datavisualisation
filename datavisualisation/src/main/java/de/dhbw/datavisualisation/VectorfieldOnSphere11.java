@@ -36,7 +36,7 @@ public class VectorfieldOnSphere11 extends AbstractAnalysis {
     @Override
     public void init() throws FileNotFoundException, IOException, CsvValidationException {
         List<List<String>> records = new ArrayList<List<String>>();
-try (CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Desktop\\Auswertung.csv"));) {
+try (CSVReader csvReader = new CSVReader(new FileReader("Auswertung.csv"));) {
     String[] values = null;
     while ((values = csvReader.readNext()) != null) {
         records.add(Arrays.asList(values));
