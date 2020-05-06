@@ -28,16 +28,16 @@ import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import org.jzy3d.plot3d.primitives.Sphere;
 
-public class VectorfieldOnSphere11 extends AbstractAnalysis {
+public class Elbow extends AbstractAnalysis {
     
     public static void main(String[] args) throws Exception {
-        AnalysisLauncher.open(new VectorfieldOnSphere11());
+        AnalysisLauncher.open(new Elbow());
     }
 
     @Override
     public void init() throws FileNotFoundException, IOException, CsvValidationException {
         List<List<String>> records = new ArrayList<List<String>>();
-try (CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Documents\\GitHub\\datavisualisation\\datavisualisation\\csv\\Auswertung.csv"));) {
+try (CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Documents\\GitHub\\datavisualisation\\datavisualisation\\csv\\elbow_auswertung.csv"));) {
     String[] values = null;
     while ((values = csvReader.readNext()) != null) {
         records.add(Arrays.asList(values));
@@ -80,6 +80,14 @@ for (int i= 0; i<records.size();i++){
     {shifty.add(Float.parseFloat(records.get(i).get(8)));}
     else {shifty.add(0f);}
 }
+
+List<Float> elbowflex = new ArrayList<Float>();
+for (int i= 0; i<records.size();i++){
+    if (!"".equals(records.get(i).get(8)))
+    {elbowflex.add(Float.parseFloat(records.get(i).get(8)));}
+    else {elbowflex.add(0f);}
+    
+}
 for (int i= 0; i<posx.size(); i++) {
     Arrow arrowZ = new Arrow();
     //System.out.println(records.get(i)); 
@@ -88,7 +96,7 @@ for (int i= 0; i<posx.size(); i++) {
     //System.out.println(posz.get(i));
     //System.out.println(shiftx.get(i));
     //System.out.println(shifty.get(i));
-    if (sqrt(shiftx.get(i)+shiftx.get(i)+shifty.get(i)*shifty.get(i)) < 25) {
+    if (elbowflex.get(i) < 25) {
     arrowZ.setData(Utils.createVector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 
@@ -99,7 +107,7 @@ for (int i= 0; i<posx.size(); i++) {
     chart.getScene().getGraph().add(arrowZ); 
     }
     
-    else if ((sqrt(shiftx.get(i)+shiftx.get(i)+shifty.get(i)*shifty.get(i)) < 50) & (sqrt(shiftx.get(i)+shiftx.get(i)+shifty.get(i)*shifty.get(i))) > 25) {
+    else if ((elbowflex.get(i) < 50) & (elbowflex.get(i)) > 25) {
     arrowZ.setData(Utils.createVector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 
@@ -109,7 +117,7 @@ for (int i= 0; i<posx.size(); i++) {
                                         50f),5f,10,0, Color.GREEN);
     }
     
-    else if ((sqrt(shiftx.get(i)+shiftx.get(i)+shifty.get(i)*shifty.get(i)) < 75) & (sqrt(shiftx.get(i)+shiftx.get(i)+shifty.get(i)*shifty.get(i))) > 50) {
+    else if ((elbowflex.get(i) < 75) & (elbowflex.get(i)) > 50) {
     arrowZ.setData(Utils.createVector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 

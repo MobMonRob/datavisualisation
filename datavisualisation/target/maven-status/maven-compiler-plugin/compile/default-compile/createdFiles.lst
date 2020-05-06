@@ -7,6 +7,8 @@ org\jzy3d\maths\Utils2.class
 org\jzy3d\plot3d\primitives\Cone.class
 de\dhbw\conjunctvisu\Test.class
 org\jzy3d\maths\RotationMatrix2.class
+de\dhbw\datavisualisation\Elbow.class
+org\jzy3d\plot3d\primitives\Cube.class
 org\jzy3d\plot3d\primitives\Example.class
 de\dhbw\conjunctvisu\ArrowOld.class
 de\dhbw\conjunctvisu\VectorfieldOnSphere1.class
