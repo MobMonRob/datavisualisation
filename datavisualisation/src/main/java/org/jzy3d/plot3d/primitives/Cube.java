@@ -39,57 +39,57 @@ public class Cube extends AbstractComposite {
      back_top_left = new Coord3d();
      back_top_left.add(center_x-(depth/2),center_y-(width/2), center_z+(height/2));
      Point p_btl;
-     p_btl = new Point();
-     p_btl.setCoord(back_top_left);
+     p_btl = new Point(back_top_left, Color.GRAY);
+     //p_btl.setCoord(back_top_left);
      
      Coord3d back_top_right;
      back_top_right = new Coord3d();
      back_top_right.add(center_x-(depth/2),center_y+(width/2), center_z+(height/2));
      Point p_btr;
-     p_btr = new Point();
-     p_btr.setCoord(back_top_right);
+     p_btr = new Point(back_top_right,Color.GRAY);
+     //p_btr.setCoord(back_top_right);
      
      Coord3d back_bottom_left;
      back_bottom_left = new Coord3d();
      back_bottom_left.add(center_x-(depth/2),center_y-(width/2), center_z-(height/2));
      Point p_bbl;
-     p_bbl = new Point();
-     p_bbl.setCoord(back_bottom_left);
+     p_bbl = new Point(back_bottom_left,Color.GRAY);
+     //p_bbl.setCoord(back_bottom_left);
      
      Coord3d back_bottom_right;
      back_bottom_right = new Coord3d();
      back_bottom_right.add(center_x-(depth/2),center_y+(width/2), center_z-(height/2));
      Point p_bbr;
-     p_bbr = new Point();
-     p_bbr.setCoord(back_bottom_right);
+     p_bbr = new Point(back_bottom_right,Color.GRAY);
+     //p_bbr.setCoord(back_bottom_right);
      
      Coord3d front_top_left;
      front_top_left = new Coord3d();
      front_top_left.add(center_x+(depth/2),center_y-(width/2), center_z+(height/2));
      Point p_ftl;
-     p_ftl = new Point();
-     p_ftl.setCoord(front_top_left);
+     p_ftl = new Point(front_top_left,Color.GRAY);
+     //p_ftl.setCoord(front_top_left);
      
      Coord3d front_top_right;
      front_top_right = new Coord3d();
      front_top_right.add(center_x+(depth/2),center_y+(width/2), center_z+(height/2));
      Point p_ftr;
-     p_ftr = new Point();
-     p_ftr.setCoord(front_top_right);
+     p_ftr = new Point(front_top_right, Color.GRAY);
+     //p_ftr.setCoord(front_top_right);
      
      Coord3d front_bottom_left;
      front_bottom_left = new Coord3d();
      front_bottom_left.add(center_x+(depth/2),center_y-(width/2), center_z-(height/2));
      Point p_fbl;
-     p_fbl = new Point();
-     p_fbl.setCoord(front_bottom_left);
+     p_fbl = new Point(front_bottom_left,Color.GRAY);
+     //p_fbl.setCoord(front_bottom_left);
      
      Coord3d front_bottom_right;
      front_bottom_right = new Coord3d();
      front_bottom_right.add(center_x+(depth/2),center_y+(width/2), center_z-(height/2));
      Point p_fbr;
-     p_fbr = new Point();
-     p_fbr.setCoord(front_bottom_right);     
+     p_fbr = new Point(front_bottom_right,Color.GRAY);
+    // p_fbr.setCoord(front_bottom_right);     
      
      back.add(p_btl);
      back.add(p_btr);
@@ -135,6 +135,7 @@ public class Cube extends AbstractComposite {
      add(top);
      add(bottom);
      
+
     
     }
 }

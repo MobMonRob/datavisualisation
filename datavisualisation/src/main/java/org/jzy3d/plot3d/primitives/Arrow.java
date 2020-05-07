@@ -1,6 +1,7 @@
 package org.jzy3d.plot3d.primitives;
 
 import de.dhbw.conjunctvisu.Utils;
+import static java.lang.System.out;
 import org.jzy3d.colors.Color;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.maths.Vector3d;
@@ -42,7 +43,10 @@ public class Arrow extends AbstractComposite {
     private static Rotate createRotateTo(Coord3d from, Coord3d to){
         double fromMag =  (float) Math.sqrt(from.x * from.x + from.y * from.y + from.z * from.z);
         double toMag =  (float) Math.sqrt(to.x * to.x + to.y * to.y + to.z * to.z);
-        double angle = Math.acos(from.dot(to)/fromMag/toMag)*180f/Math.PI;
-        return new Rotate(angle, Utils.cross(from,to));
+        double angle = Math.acos(from.dot(to)/(fromMag*toMag))*180f/Math.PI;
+        System.out.println(angle);
+        Coord3d v = Utils.cross(from,to);
+        v.normalizeTo(1);
+        return new Rotate(angle, v);
     }
 }
