@@ -28,6 +28,7 @@ import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import org.jzy3d.plot3d.primitives.Sphere;
+import org.jzy3d.plot3d.rendering.lights.Light;
 
 public class Elbow extends AbstractAnalysis {
     
@@ -47,7 +48,14 @@ try (CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\D
 //System.out.print(records.get(0).get(0));
 
 chart = AWTChartComponentFactory.chart(Quality.Advanced, getCanvasType());
-        
+//Light light = chart.addLight(new Coord3d(500f, -700f, 2000f));
+//light.setRepresentationRadius(100);
+
+//define colors
+Color darkred = new Color(169,0,0);
+Color green = new Color(34,139,34);
+
+
 List<Float> posz = new ArrayList<Float>();
 for (int i= 0; i<records.size()-1;i++){
     if (!"".equals(records.get(i+1).get(0)))
@@ -97,28 +105,28 @@ for (int i= 0; i<posx.size(); i++) {
     //System.out.println(posz.get(i));
     //System.out.println(shiftx.get(i));
     //System.out.println(shifty.get(i));
-    if (elbowflex.get(i) < 25) {
+    if (elbowflex.get(i) < 20) {
     arrowZ.setData(new Vector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 
                                         new Coord3d(posx.get(i)+shiftx.get(i),
                                                     posy.get(i)+shifty.get(i),
                                                     posz.get(i))),
-                                        10f,10,0, Color.CYAN);
+                                        10f,10,0, Color.RED);
     chart.getScene().getGraph().add(arrowZ); 
     }
     
-    else if ((elbowflex.get(i) < 50) & (elbowflex.get(i)) > 25) {
+    else if ((elbowflex.get(i) < 55) & (elbowflex.get(i)) > 20) {
     arrowZ.setData(new Vector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 
                                         new Coord3d(posx.get(i)+shiftx.get(i),
                                                     posy.get(i)+shifty.get(i),
                                                     posz.get(i))),
-                                        10f,10,0, Color.GREEN);
+                                        10f,10,0, green);
     }
     
-    else if ((elbowflex.get(i) < 75) & (elbowflex.get(i)) > 50) {
+    else if ((elbowflex.get(i) < 75) & (elbowflex.get(i)) > 55) {
     arrowZ.setData(new Vector3d(new Coord3d(posx.get(i),
                                                     posy.get(i),
                                                     posz.get(i)), 
@@ -135,7 +143,7 @@ for (int i= 0; i<posx.size(); i++) {
                                         new Coord3d(posx.get(i)+shiftx.get(i),
                                                     posy.get(i)+shifty.get(i),
                                                     posz.get(i))),
-                                        10f,10,0, Color.RED);        
+                                        10f,10,0,darkred);        
             }
     chart.getScene().getGraph().add(arrowZ); 
     }   
@@ -170,7 +178,7 @@ for (int i= 0; i<bigbox.size();i++){
 
 for (int i= 0; i<bigbox.size(); i++) {
     Cube cubebig = new Cube();
-    cubebig.drawCube(5,5,5,boxx.get(i),boxy.get(i),boxz.get(i));
+    cubebig.drawCube(20,20,20,boxx.get(i),boxy.get(i),boxz.get(i));
     chart.getScene().getGraph().add(cubebig); 
     }
 }

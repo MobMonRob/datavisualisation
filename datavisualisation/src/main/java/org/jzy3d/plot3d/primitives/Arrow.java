@@ -26,9 +26,11 @@ public class Arrow extends AbstractComposite {
         cylinder = new Cylinder();
         cylinder.setData(new Coord3d(0, 0, -length/2f),
                          cylinderHeight, radius, slices, rings, color);
+        cylinder.setWireframeColor(Color.GRAY);
         cone = new Cone();
         cone.setData(new Coord3d(0, 0, length/2d-coneHeight), 
                      coneHeight, radius*1.6f, slices, rings, color);
+        cone.setWireframeColor(Color.GRAY);
         add(cylinder);
         add(cone);
 
@@ -44,7 +46,7 @@ public class Arrow extends AbstractComposite {
         double fromMag =  (float) Math.sqrt(from.x * from.x + from.y * from.y + from.z * from.z);
         double toMag =  (float) Math.sqrt(to.x * to.x + to.y * to.y + to.z * to.z);
         double angle = Math.acos(from.dot(to)/(fromMag*toMag))*180f/Math.PI;
-        System.out.println(angle);
+        //System.out.println(angle);
         Coord3d v = Utils.cross(from,to);
         v.normalizeTo(1);
         return new Rotate(angle, v);
