@@ -1,7 +1,7 @@
 package de.dhbw.datavisualisation;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
+
+import au.com.bytecode.opencsv.CSVReader;
 import de.dhbw.conjunctvisu.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -36,67 +36,95 @@ public class Mean_KIRK extends AbstractAnalysis {
     }
 
     @Override
-    public void init() throws FileNotFoundException, IOException, CsvValidationException {
+    public void init() throws FileNotFoundException, IOException  {
         List<List<String>> records = new ArrayList<List<String>>();
-try (CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Documents\\GitHub\\datavisualisation\\datavisualisation\\csv\\mean.csv"));) {
-    String[] values = null;
-    while ((values = csvReader.readNext()) != null) {
-        records.add(Arrays.asList(values));
+        
+        //try {
+                
+            CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Documents\\GitHub\\datavisualisation\\datavisualisation\\csv\\mean.csv"), '\t' ,'"'); 
+            
+            String[] values = null;
+
+            while ((values = csvReader.readNext()) != null) {
+                records.add(Arrays.asList(values));
+            }
+            //System.out.print(records.get(0).get(0));
+
+            chart = AWTChartComponentFactory.chart(Quality.Advanced, getCanvasType());
+
+            Color darkred = new Color(169,0,0);
+            Color green = new Color(34,139,34);
+
+            System.out.println(records);
+            List<Float> rob_meanx = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(129).strip().isEmpty()) {
+                    try {
+                        rob_meanx.add(Float.parseFloat(records.get(i).get(129)));
+                    } catch (NumberFormatException e){
+                        System.out.println("\""+records.get(i).get(129)+"\"");
+                    }
+                }
+
+            }
+
+            List<Float> rob_meany = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(126).strip().isEmpty())
+                {rob_meany.add(Float.parseFloat(records.get(i).get(126)));}
+
+            }
+
+            List<Float> rob_meanz = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(125).strip().isEmpty())
+                {rob_meanz.add(Float.parseFloat(records.get(i).get(125)));}
+
+            }
+
+            List<Float> vicon_meanx = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(84).strip().isEmpty())
+                {vicon_meanx.add(Float.parseFloat(records.get(i).get(84)));}
+
+            }
+
+            List<Float> vicon_meany = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(91).strip().isEmpty())
+                {vicon_meany.add(Float.parseFloat(records.get(i).get(91)));}
+                else {vicon_meany.add(0f);}
+            }
+
+            List<Float> vicon_meanz = new ArrayList<Float>();
+            for (int i= 1; i<records.size();i++){
+                if (!records.get(i).get(85).strip().isEmpty())
+                {vicon_meanz.add(Float.parseFloat(records.get(i).get(85)));}
+
+            }
+
+               double radius;
+            for (int i= 0; i<rob_meanx.size(); i++) {
+                radius = sqrt(((rob_meanx.get(i)-vicon_meanx.get(i))*(rob_meanx.get(i)-vicon_meanx.get(i)))
+                            +((rob_meany.get(i)-vicon_meany.get(i))*(rob_meany.get(i)-vicon_meany.get(i)))
+                            +((rob_meanz.get(i)-vicon_meanz.get(i))*(rob_meanz.get(i)-vicon_meanz.get(i))));
+                if (radius < 1000){
+                Sphere sphere = new Sphere(new Coord3d(rob_meanx.get(i),rob_meany.get(i),rob_meanz.get(i)),(float)radius/20,15,darkred);
+                
+                sphere.setWireframeColor(darkred);
+                
+                chart.getScene().getGraph().add(sphere); 
+                }
+            }
+            
+            //for (int i= 0; i<rob_meanz.size(); i++) {
+              //  Sphere sphere = new Sphere(new Coord3d(vicon_meanx.get(i),vicon_meany.get(i),vicon_meanz.get(i)),2f,15,green);
+               // sphere.setWireframeColor(green);
+                //chart.getScene().getGraph().add(sphere); 
+            //}
+        /*} catch (Exception e){
+        
+        }*/
     }
 }
-//System.out.print(records.get(0).get(0));
 
-chart = AWTChartComponentFactory.chart(Quality.Advanced, getCanvasType());
-
-Color darkred = new Color(169,0,0);
-Color green = new Color(34,139,34);
-
-List<Float> rob_meanx = new ArrayList<Float>();
-for (int i= 0; i<records.size()-1;i++){
-    if (!"".equals(records.get(i+1).get(45)))
-    {rob_meanx.add(Float.parseFloat(records.get(i+1).get(45)));}
-    else {rob_meanx.add(0f);}
-}
-
-List<Float> rob_meany = new ArrayList<Float>();
-for (int i= 0; i<records.size()-1;i++){
-    if (!"".equals(records.get(i+1).get(49)))
-    {rob_meany.add(Float.parseFloat(records.get(i+1).get(49)));}
-    else {rob_meany.add(0f);}
-}
-
-List<Float> rob_meanz = new ArrayList<Float>();
-for (int i= 0; i<records.size()-1;i++){
-    if (!"".equals(records.get(i+1).get(47)))
-    {rob_meanz.add(Float.parseFloat(records.get(i+1).get(47)));}
-    else {rob_meanz.add(0f);}
-}
-    
-List<Float> boxx = new ArrayList<Float>();
-for (int i= 0; i<bigbox.size();i++){
-    if (!"".equals(bigbox.get(i).get(0)))
-    {boxx.add(Float.parseFloat(bigbox.get(i).get(0)));}
-    else {boxx.add(0f);}
-}   
-
-List<Float> boxy = new ArrayList<Float>();
-for (int i= 0; i<bigbox.size();i++){
-    if (!"".equals(bigbox.get(i).get(1)))
-    {boxy.add(Float.parseFloat(bigbox.get(i).get(1)));}
-    else {boxy.add(0f);}
-} 
- 
-List<Float> boxz = new ArrayList<Float>();
-for (int i= 0; i<bigbox.size();i++){
-    if (!"".equals(bigbox.get(i).get(2)))
-    {boxz.add(Float.parseFloat(bigbox.get(i).get(2)));}
-    else {boxz.add(0f);}
-}     
-
-for (int i= 0; i<bigbox.size(); i++) {
-    Cube cubebig = new Cube();
-    cubebig.drawCube(5,5,5,boxx.get(i),boxy.get(i),boxz.get(i));
-    chart.getScene().getGraph().add(cubebig); 
-    }
-}
-}

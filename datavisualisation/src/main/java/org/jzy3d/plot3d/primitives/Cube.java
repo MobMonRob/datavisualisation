@@ -1,15 +1,8 @@
 package org.jzy3d.plot3d.primitives;
 
-import de.dhbw.conjunctvisu.Utils;
 import org.jzy3d.colors.Color;
 import org.jzy3d.maths.Coord3d;
-import org.jzy3d.maths.Vector3d;
-import org.jzy3d.plot3d.transform.Rotate;
-import org.jzy3d.plot3d.transform.Transform;
-import org.jzy3d.plot3d.transform.Translate;
-
-
-    import org.jzy3d.plot3d.primitives.Point; 
+import org.jzy3d.plot3d.primitives.Point; 
 
 
 
