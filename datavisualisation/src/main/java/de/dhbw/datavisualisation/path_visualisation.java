@@ -7,11 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 import org.jzy3d.analysis.AbstractAnalysis;
 import org.jzy3d.analysis.AnalysisLauncher;
 import org.jzy3d.chart.factories.AWTChartComponentFactory;
@@ -42,20 +39,20 @@ public class path_visualisation extends AbstractAnalysis {
             // Convert JSON File to Java Object
             Read_JSON_from_RPS.RPS rps = gson.fromJson(reader, Read_JSON_from_RPS.RPS.class);
             
-            float rx =  rps.getPointsPerTemplates().get(0).getPoints().get(0).getFlange().getRx();
+            
             
             // print  
-            System.out.println(rps);
-            System.out.println(reader);
-            System.out.println(rx);
+            //System.out.println(rps);
+            //System.out.println(reader);
+
 
         
     
-            System.out.println("test");
+            //System.out.println("test");
            
             chart = AWTChartComponentFactory.chart(Quality.Advanced, getCanvasType());
 
-            Color darkred = new Color(169,0,0);
+            Color darkred = new Color(169,0,0,100);
             Color green = new Color(34,139,34);
 
             
@@ -63,8 +60,8 @@ public class path_visualisation extends AbstractAnalysis {
             List<Float> rps_y = new ArrayList<Float>(); 
             List<Float> rps_z = new ArrayList<Float>(); 
             
-            for (int j = 0; j<rps.pointsPerTemplates.size();j++)
-            {
+            //for (int j = 0; j<rps.pointsPerTemplates.size();j++)
+            { int j =6;
                 for (int i = 0;i<rps.pointsPerTemplates.get(j).getPoints().size();i++){
                     rps_x.add(rps.pointsPerTemplates.get(j).getPoints().get(i).getFlange().getX());
                     rps_y.add(rps.pointsPerTemplates.get(j).getPoints().get(i).getFlange().getY());
@@ -76,7 +73,7 @@ public class path_visualisation extends AbstractAnalysis {
 //DRAWING
                double radius;
             for (int i= 0; i<rps_x.size(); i++) {
-                radius =10;
+                radius =1;
               
                 Sphere sphere = new Sphere(new Coord3d(rps_x.get(i),rps_y.get(i),rps_z.get(i)),(float)radius/10,15,darkred);
                 
