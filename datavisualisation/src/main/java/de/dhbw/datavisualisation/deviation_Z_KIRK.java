@@ -2,35 +2,22 @@ package de.dhbw.datavisualisation;
 
 
 import au.com.bytecode.opencsv.CSVReader;
-import de.dhbw.conjunctvisu.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.jzy3d.plot3d.primitives.Arrow;
 import java.util.List;
 import org.jzy3d.analysis.AbstractAnalysis;
 import org.jzy3d.analysis.AnalysisLauncher;
 import org.jzy3d.chart.factories.AWTChartComponentFactory;
 import org.jzy3d.colors.Color;
-import org.jzy3d.colors.ColorMapper;
-import org.jzy3d.colors.colormaps.ColorMapRainbow;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
-import org.jzy3d.maths.Range;
-import org.jzy3d.maths.Scale;
-import org.jzy3d.maths.Vector3d;
-import org.jzy3d.plot3d.builder.Builder;
-import org.jzy3d.plot3d.builder.Mapper;
-import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
-import org.jzy3d.plot3d.primitives.Cube;
-import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import org.jzy3d.plot3d.primitives.Sphere;
-import org.jzy3d.plot3d.rendering.view.modes.ViewBoundMode;
 
 /**
  * Abweichung nur z
