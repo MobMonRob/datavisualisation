@@ -29,6 +29,11 @@ import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import org.jzy3d.plot3d.primitives.Sphere;
 
+/**
+ * Mittelwert |x,y,z| Abweichungen als Kugelradius
+ * 
+ * @author rettig
+ */
 public class Mean_KIRK extends AbstractAnalysis {
     
     public static void main(String[] args) throws Exception {
@@ -40,8 +45,8 @@ public class Mean_KIRK extends AbstractAnalysis {
         List<List<String>> records = new ArrayList<List<String>>();
         
         //try {
-                
-            CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\muellersm\\Documents\\GitHub\\datavisualisation\\datavisualisation\\csv\\mean.csv"), '\t' ,'"'); 
+            CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\rettig\\Documents\\NetBeansProjects\\datavisualisation\\datavisualisation\\etc\\csv\\mean.csv"), '\t' ,'"'); 
+            //CSVReader csvReader = new CSVReader(new FileReader("C:\\Users\\rettig\\Documents\\NetBeansProjects\\datavisualisation\\datavisualisation\\csv\\mean.csv"), '\t' ,'"'); 
             
             String[] values = null;
 
@@ -56,7 +61,7 @@ public class Mean_KIRK extends AbstractAnalysis {
             Color green = new Color(34,139,34);
 
             System.out.println(records);
-            List<Float> rob_meanx = new ArrayList<Float>();
+            List<Float> rob_meanx = new ArrayList<>();
             for (int i= 1; i<records.size();i++){
                 if (!records.get(i).get(129).strip().isEmpty()) {
                     try {
