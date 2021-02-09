@@ -18,6 +18,11 @@ import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import org.jzy3d.plot3d.primitives.Sphere;
 
+/**
+ * pfad visualisierung 
+ * 
+ * @author rettig
+ */
 public class path_visualisation extends AbstractAnalysis {
     
     
