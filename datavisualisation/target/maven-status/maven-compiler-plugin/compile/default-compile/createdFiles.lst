@@ -3,9 +3,11 @@ de\dhbw\conjunctvisu\VectorfieldOnSphere1$1.class
 de\dhbw\datavisualisation\deviation_Z_KIRK.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS$PointsPerTemplates.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS.class
+de\dhbw\datavisualisation\Socket$2.class
 de\orat\povray\VectorFieldVisualisation.class
 org\jzy3d\maths\Utils2.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS$PointsPerTemplates$Points$Flange$State$Joints.class
+de\dhbw\datavisualisation\Json_RPS.class
 org\jzy3d\plot3d\primitives\Cone.class
 org\jzy3d\maths\RotationMatrix2.class
 de\dhbw\datavisualisation\Elbow.class
@@ -16,6 +18,7 @@ de\orat\povray\POVRayScriptFactory.class
 de\dhbw\conjunctvisu\Utils.class
 de\dhbw\datavisualisation\Mean_KIRK.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS$PointsPerTemplates$Points$Flange$TCP.class
+de\dhbw\datavisualisation\Socket$1.class
 de\dhbw\conjunctvisu\Test.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS$PointsPerTemplates$Points$Flange$State.class
 org\jzy3d\plot3d\primitives\Cube.class
@@ -24,3 +27,4 @@ de\dhbw\conjunctvisu\ArrowOld.class
 de\dhbw\conjunctvisu\VectorfieldOnSphere1.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS$RPS$PointsPerTemplates$Points$Flange.class
 de\dhbw\datavisualisation\Read_JSON_from_RPS.class
+de\dhbw\datavisualisation\Socket.class
