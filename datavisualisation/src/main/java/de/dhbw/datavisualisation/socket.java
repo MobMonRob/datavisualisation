@@ -133,7 +133,7 @@ public class Socket extends JFrame implements ActionListener {
          
           
       try {
-          WebSocketClient test = new WebSocketClient(new java.net.URI("http://192.168.12.27:3333")) {
+          WebSocketClient test = new WebSocketClient(new java.net.URI("http://192.168.12.27:3333/program/load")) {
               @Override
               public void onOpen(ServerHandshake sh) {
                   System.out.println("Connected to RPS-HTTP-Interface: " + getURI() + "\n"); 

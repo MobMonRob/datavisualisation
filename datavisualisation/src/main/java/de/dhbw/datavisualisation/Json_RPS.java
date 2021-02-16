@@ -6,7 +6,8 @@
 package de.dhbw.datavisualisation;
  
 public class Json_RPS { 
-      String topic = "/liveData";
-      String command = "subscribe";
+    String topic = "POST";  
+    String filepath = "C:\\Users\\Olive\\Desktop\\RPS-Programme\\CsvStateList.artm";
+      //String command = "subscribe";
       public Json_RPS() {}
   }
